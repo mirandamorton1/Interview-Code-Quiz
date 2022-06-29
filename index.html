@@ -8,27 +8,33 @@
     <link rel="stylesheet" href="./Assets/stylesheet.css" />
   </head>
   <body>
-    <div class="wrapper">
-      <header>
+    <div class="scores"><a href="highscores.htlm">View Highscores</a></div>
+
+    <div class="time">Time: <span id="time">0</span></div>
+  <div class="wrapper">
+    <div id="startQuiz">
         <h1>Code Quiz Challenge</h1>
-      </header>
-      <div class="card">
-        <div class="card-header">
           <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by 10 seconds!</p>
-        </div>
-        <!-- <div class="card-body">
-          <textarea
-            readonly
-            id="quizinstructions"
-            placeholder="Quiz instructions"
-            aria-label="Start Quiz"
-          ></textarea>
-        </div> -->
-        <div class="card-footer">
-          <button id="generate" class="btn">Start Quiz</button>
-        </div>
-      </div>
+          <button id="startQuizBtn">Start Quiz</button>
     </div>
-    <script src="script.js"></script>
+
+
+        <div id="questions">
+            <h2 id="questionTitle"></h2>
+            <ol id="choices" class="choices">
+              <li id="choiceBtn" class="btn"></li>
+              <li id="choiceBtn" class="btn"></li>
+              <li id="choiceBtn" class="btn"></li>
+              <li id="choiceBtn" class="btn"></li>
+            </ol>
+        </div>
+
+        <div id="end">
+            <h2>All done!</h2>
+            <p>Your final score is <span id=final-score></span>.</p>
+        </div>       
+        <script src="./script.js"></script>
+        <script src="./Assets/questions.js"></script>
+  </div>
   </body>
 </html>
