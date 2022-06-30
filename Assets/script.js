@@ -1,5 +1,4 @@
 //State variables
-var currentQuestionIndex =0;
 var choicesEl = document.getElementById("choices");
 var submitBtn = document.getElementById("submit");
 var initialsEl = document.getElementById("initials");
@@ -16,21 +15,21 @@ var questionTitle = document.getElementById("questionTitle")
 // document.body.appendChild(questions[0])
 questions.setAttribute("style", "display: none");
 
-var questionList = [
+[
   {
   title: "Commonly used data types DO NOT include:",
-  choices: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
+  choices: ["strings", "booleans", "alerts", "numbers"],
   answer: "alerts"
   },
 {
   title: "The condition in an if/else statement is enclosed with_____.",
-  choices: ["1. quotes", "2. curly brackets", "3. parenthesis", "4. square brackets"],
-  answer: "alerts" 
+  choices: ["quotes", "curly brackets", "parenthesis", "square brackets"],
+  answer: "curly brackets" 
 }, 
 {
   title: "Arrays in JavaScript can be used to store ______.",
   choices: ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"],
-  answer: "alerts"
+  answer: "all of the above"
 },
 { 
   title: "String values must be enclosed within _____ when being assigned to varaibles.",
@@ -50,10 +49,10 @@ var questionList = [
 // var title1 = document.createElement("h2")
 // title1.innerHTML="Commonly used data types DO NOT include:"
 // document.body.appendChild(title1)
-
+var currentQuestionIndex = 0;
 startQuizBtn.addEventListener("click", startQuestions);
 
-var questionNumber = 0
+// var questionNumber = 0
 function startQuestions() {
   
   startQuiz.setAttribute("style", "display: none");
@@ -63,6 +62,8 @@ function startQuestions() {
 
   // start timer on the screen
  
+getQuestion();
+
   var timeEl = document.getElementById("time")
   var timeLeft = 100;
   console.log(timeLeft);
@@ -74,9 +75,9 @@ function startQuestions() {
     if (timeLeft === 0) {
       clearInterval(timerInterval)
     }}, 1000);
-
-questionTitle.textContent=questionList[questionNumber].title
-
+  };
+// questionTitle.textContent=questionList[questionNumber].title
+// choices.textContent=questionList[questionNumber].title
 
 
 // // Selects element by id
@@ -86,29 +87,48 @@ questionTitle.textContent=questionList[questionNumber].title
 //     startScreenEl.setAttribute("class", "hide");
 // }
 
-// function getQuestion () {
-//     var currentQuestion = questions[currentQuestionIndex];
+function getQuestion () {
+    var currentQuestion = questionList[currentQuestionIndex];
 
-//     var titleEl = document.getElementById("question-title");
-//     titleEl.textContent = currentQuestion.title;
+    var titleEl = document.getElementById("questionTitle");
+    titleEl.textContent = currentQuestion.title;
 
-//     choicesEl.innerHTML = "";
+    choicesEl.innerHTML = "";
 
-//     currentQuestion.choices.forEach(function(choice, i) {
+    currentQuestion.choices.forEach(function(choice, i) {
 
-//         var choiceNode = document.createElement("button");
-//         choiceNode.setAttribute("class", "choice");
-//         choiceNode.setAttribute("value", choice);
+        var choiceNode = document.createElement("button");
+        choiceNode.setAttribute("class", "choice");
+        choiceNode.setAttribute("value", choice);
 
-//         choiceNode.textContent = i + 1 + "." + choice;
+        choiceNode.textContent = i + 1 + "." + choice;
+        choiceNode.onclick = questionClick;
+        choicesEl.appendChild(choiceNode);
+      
 
-//         choiceNode.onclick = questionClick;})}
+    // startBtn.addEventListener("click", startQuiz);
 
-//     startBtn.addEventListener("click", startQuiz);
+  //   var startBtn = document.getElementById("start-btn");
+  // startBtn.addEventListener('click', (startQuiz) => {
+  });
+}
+function questionClick(){
+  if (this.value !== questionList[currentQuestionIndex].answer) {
+    alert("Wrong!");
+    // timeLeft-=10;   
+    // timeEl.textContent = timeLeft;
+  } else { alert("Correct!"); 
 
-//     var startBtn = document.getElementById("start-btn");
-//   startBtn.addEventListener('click', (startQuiz) => {
-//   })
-
-//   startBtn.addEventListener('click',  setTime)
+  };
+  currentQuestionIndex++;
+  console.log(currentQuestionIndex)
+  if (currentQuestionIndex=questionList.length) {
+    endQuiz();
+  } else {
+    getQuestion ();
   }
+};
+function endQuiz () {
+  alert("Finished");
+}
+//   startBtn.addEventListener('click',  setTime)
