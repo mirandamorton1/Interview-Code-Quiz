@@ -1,6 +1,8 @@
 //State variables
 var choicesEl = document.getElementById("choices");
 var submitBtn = document.getElementById("submit");
+var score = 0;
+var finalScore = document.getElementById("finalScore")
 var initialsEl = document.getElementById("initials");
 var feedbackEl = document.getElementById("feedback");
 var end = document.getElementById("end")
@@ -116,7 +118,8 @@ function questionClick(){
     alert("Wrong!");
     timeLeft-=10;   
     timeEl.textContent = timeLeft;
-  } else { alert("Correct!"); 
+  } else { alert("Correct!");
+    score += 1; 
 
   };
   currentQuestionIndex++;
@@ -130,7 +133,9 @@ function questionClick(){
 };
 function endQuiz () {
   alert("Finished");
-  //end display 
+  end.setAttribute("style", "display: flex");
+  questions.setAttribute("style", "display: none");
+  finalScore.textContent ="Your final score is " + score + ".";
   //grab time left variable when this runs
   //append child
 }
