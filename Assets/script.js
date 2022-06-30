@@ -5,7 +5,8 @@ var initialsEl = document.getElementById("initials");
 var feedbackEl = document.getElementById("feedback");
 var end = document.getElementById("end")
 end.setAttribute("style", "display: none")
-
+var timeLeft = 100;
+var timeEl = document.getElementById("time")
 // want the start button to go to next questions
 var startQuiz = document.getElementById("startQuiz")
 var startQuizBtn = document.getElementById("startQuizBtn")
@@ -15,7 +16,7 @@ var questionTitle = document.getElementById("questionTitle")
 // document.body.appendChild(questions[0])
 questions.setAttribute("style", "display: none");
 
-[
+var questionList = [
   {
   title: "Commonly used data types DO NOT include:",
   choices: ["strings", "booleans", "alerts", "numbers"],
@@ -28,19 +29,19 @@ questions.setAttribute("style", "display: none");
 }, 
 {
   title: "Arrays in JavaScript can be used to store ______.",
-  choices: ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"],
+  choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
   answer: "all of the above"
 },
 { 
   title: "String values must be enclosed within _____ when being assigned to varaibles.",
-  choices: ["1. commas", "2. curly brackets", "3. quotes", "4. parenthesis"],
-  answer: "alerts"
+  choices: ["commas", "curly brackets", "quotes", "parenthesis"],
+  answer: "quotes"
 
 },
 {
   title: "A very useful tool used during developement and debugging for printing content to the debugger is:",
-  choices: ["1. JavaScript", "2. terminal/bash", "3. for loops", "console.log"],
-  answer: "alerts"
+  choices: ["JavaScript", "terminal/bash", "for loops", "console.log"],
+  answer: "console.log"
 
 },
 ]
@@ -63,9 +64,6 @@ function startQuestions() {
   // start timer on the screen
  
 getQuestion();
-
-  var timeEl = document.getElementById("time")
-  var timeLeft = 100;
   console.log(timeLeft);
 
   var timerInterval = setInterval(function(){
@@ -113,16 +111,18 @@ function getQuestion () {
   });
 }
 function questionClick(){
+  console.log(this.value)
   if (this.value !== questionList[currentQuestionIndex].answer) {
     alert("Wrong!");
-    // timeLeft-=10;   
-    // timeEl.textContent = timeLeft;
+    timeLeft-=10;   
+    timeEl.textContent = timeLeft;
   } else { alert("Correct!"); 
 
   };
   currentQuestionIndex++;
   console.log(currentQuestionIndex)
-  if (currentQuestionIndex=questionList.length) {
+  console.log(questionList.length)
+  if (currentQuestionIndex===questionList.length) {
     endQuiz();
   } else {
     getQuestion ();
@@ -130,5 +130,7 @@ function questionClick(){
 };
 function endQuiz () {
   alert("Finished");
+  //end display 
+  //grab time left variable when this runs
+  //append child
 }
-//   startBtn.addEventListener('click',  setTime)
