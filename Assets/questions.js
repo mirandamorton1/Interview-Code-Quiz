@@ -27,6 +27,4 @@
 
 },
 ] 
-var title1 = "Commonly used data types DO NOT include:"
-var title1 = 
-console.log(questions["title"])
+
