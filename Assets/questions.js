@@ -1,5 +1,4 @@
-// use array of questions. each question is an objet 
-var questions = [
+[
     {
     title: "Commonly used data types DO NOT include:",
     choices: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
@@ -27,4 +26,7 @@ var questions = [
     answer: "alerts"
 
 },
-]
+] 
+var title1 = "Commonly used data types DO NOT include:"
+var title1 = 
+console.log(questions["title"])

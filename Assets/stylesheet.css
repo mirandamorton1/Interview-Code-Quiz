@@ -35,6 +35,10 @@ header {
   color: hsl(206, 17%, 28%);
 }
 
+.questionTitle {
+  display: flex;
+}
+
 #startQuiz, #questions, #end {
   display: flex;
   flex-direction: column;

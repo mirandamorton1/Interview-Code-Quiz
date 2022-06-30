@@ -12,18 +12,24 @@ var startQuiz = document.getElementById("startQuiz")
 var startQuizBtn = document.getElementById("startQuizBtn")
 
 var questions = document.getElementById("questions")
+// document.body.appendChild(questions[0])
 questions.setAttribute("style", "display: none");
 
 // use event listener to make start page go away
+var title1 = document.createElement("h2")
+title1.innerHTML="Commonly used data types DO NOT include:"
+
+document.body.appendChild(title1)
 
 startQuizBtn.addEventListener("click", startQuestions);
+
 
 function startQuestions() {
   
   startQuiz.setAttribute("style", "display: none");
-  
+
   //make questions appear
-  // questions.setAttribute("style", "display: flex");
+  questions.setAttribute("style", "display: block");
 
   // start timer on the screen
  
@@ -31,7 +37,7 @@ function startQuestions() {
   var timeLeft = 100;
   console.log(timeLeft);
 
-  var timeInterval = setInterval(function(){
+  var timerInterval = setInterval(function(){
     timeLeft--;
     timeEl.textContent = timeLeft;
   
@@ -40,20 +46,6 @@ function startQuestions() {
     }}, 1000);
 
 
-// // var timerEl = document.querySelector(".timerEl");
-// var timerEl = document.querySelector(".timerEl")
-// var secondsLeft = 10;
-
-
-// function setTime() {
-
-//   var timerInterval = setInterval(function() {
-//     secondsLeft--;
-//     timerEl.textContent = secondsLeft + " seconds left!";
-
-//     if(secondsLeft === 0) {
-//      clearInterval(timerInterval)
-// }}, 1000);
 
 // // Selects element by id
 
