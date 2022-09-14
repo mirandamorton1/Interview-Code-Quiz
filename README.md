@@ -29,7 +29,7 @@ This is coding interview. After the user clicks on the start button, the first q
   ### Technology Used:
   - HTML
   - CSS
-- JavaScript
+  - JavaScript
   ### Contributors: 
   To contribute to this project, clone this repo locally and commit your code on a separate branch. 
   #### Contributors:
